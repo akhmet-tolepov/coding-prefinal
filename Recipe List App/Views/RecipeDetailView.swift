@@ -19,8 +19,8 @@ struct RecipeDetailView: View {
                     Text("Ingredients")
                         .font(.headline)
                         .padding(.bottom)
-                    ForEach(recipe.ingredients, id: \.self) { i in
-                        Text("• " + i)
+                    ForEach(recipe.ingredients) { i in
+                        Text("• " + i.name)
                         
                     }
                 }.padding(.horizontal, 5)
@@ -28,8 +28,9 @@ struct RecipeDetailView: View {
                     Text("Directions")
                         .font(.headline)
                         .padding(.vertical)
-                    ForEach(0..<recipe.directions.count) { index in
-                        Text(String(index + 1) + ". " + recipe.directions[index])
+                    ForEach(0..<recipe.directions.count, id: \.self) { index in
+                        
+                        Text(String(index+1) + ". " + recipe.directions[index])
                             .padding(.bottom, 5)
                     }
                 }.padding(.horizontal, 5)
